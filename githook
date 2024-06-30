@@ -1,0 +1,24 @@
+#bin/bash
+
+#bin/bash
+
+# Check if all changed files follow black code style
+# Create a variable to store the checked files
+checked_files=$(git diff --name-only --diff-filter=d --cached | grep "\.py$")
+
+# Check if checked_files is empty
+if [ -z "$checked_files" ]; then
+    exit 0
+fi
+
+if ! black --check --diff $checked_files; then
+    echo "Error: Some files do not follow black code style. Please run 'black' on the modified files."
+    exit 1
+fi
+
+# Check if all changed files pass ruff linting
+if ! ruff check $checked_files; then
+    echo "Error: Some files do not pass ruff linting. Please fix the linting issues before committing."
+    exit 1
+fi
+
