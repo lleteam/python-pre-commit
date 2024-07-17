@@ -1,7 +1,5 @@
 #bin/bash
 
-#bin/bash
-
 # Check if all changed files follow black code style
 # Create a variable to store the checked files
 checked_files=$(git diff --name-only --diff-filter=d --cached | grep "\.py$")
