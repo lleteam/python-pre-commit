@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  SECRET: ${{ secrets.SECRET }}
+  NO_SECRET: ${{ vars.NO_SECRET }}
 jobs:
   test:
     runs-on: ubuntu-latest
