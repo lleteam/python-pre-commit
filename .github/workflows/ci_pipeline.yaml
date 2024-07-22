@@ -9,7 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      ENV_VAR: {{ vars.ENV_VAR }}
+      ENV_VAR: ${{ vars.ENV_VAR }}
       SECRET_VAR: ${{ secrets.SECRET_VAR }}
     steps:
       - name: Check out the repository
