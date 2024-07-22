@@ -29,12 +29,10 @@ jobs:
       - name: Setup environment variables
         env:
           PYTHONPATH: src
-          ENV_VAR: ${{ secrets.ENV_VAR }}
-          SECRET_VAR: ${{ secrets.SECRET_VAR }}
+          ENV_VAR: ${{ test_env.vars.ENV_VAR }}
+          SECRET_VAR: ${{ test_env.secrets.SECRET_VAR }}
         run: |
-          echo "PYTHONPATH=$PYTHONPATH" >> $GITHUB_ENV && \
-          echo "ENV_VAR=$ENV_VAR" >> $GITHUB_ENV && \
-          echo "SECRET_VAR=$SECRET_VAR" >> $GITHUB_ENV
+          echo "Hello, $ENV_VAR"
       
       - name: Run tests
         run: |
