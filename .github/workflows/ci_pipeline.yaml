@@ -26,13 +26,12 @@ jobs:
         run: |
           poetry install
 
-      - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=src" >> $GITHUB_ENV
+      - name: Setup environment variables
+        run: |
+          echo "PYTHONPATH=src" >> $GITHUB_ENV
+          echo "ENV_VAR=${{ vars.ENV_VAR }}" >> $GITHUB_ENV
+          echo "SECRET_VAR=${{ secrets.SECRET_VAR }}" >> $GITHUB_ENV
       
       - name: Run tests
-        with:
-          env: |
-            ENV_VAR=${{ vars.ENV_VAR }}
-            SECRET_VAR=${{ secrets.SECRET_VAR }}
-          runCmd: |
+        run: |
             poetry run pytest
