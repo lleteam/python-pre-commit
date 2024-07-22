@@ -4,5 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def mock_sum(a, b):
-    print(f"SECRET: {os.getenv('SECRET')}")
     return a + b
+
+def mock_prod(a, b):
+    return a * b
