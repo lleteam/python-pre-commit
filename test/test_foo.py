@@ -11,3 +11,4 @@ def test_mock_env_var():
 
 def test_mock_secret_var():
     assert mock_secret_var() == "bar"
+
