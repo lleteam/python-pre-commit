@@ -32,7 +32,7 @@ jobs:
           ENV_VAR: ${{ vars.ENV_VAR }}
           SECRET_VAR: ${{ secrets.SECRET_VAR }}
         run: |
-          echo "PYTHONPATH=$PYTHONPATH" >> $GITHUB_ENV && \
+          echo "PYTHONPATH=$PYTHONPATH" >> $GITHUB_ENV
       
       - name: Run tests
         run: |
