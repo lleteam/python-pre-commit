@@ -37,6 +37,3 @@ jobs:
       - name: Deploy to staging
         run: |
           echo "Deploying to staging environment"
-
-# yesterday, I addressed comments on my dashboard PR and had a PR for CD workflow which automatically builds and pushes the image to ECR when a PR is merged into main.
-# Today, I will address comments on my 2 PRs if any.
