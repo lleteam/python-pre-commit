@@ -31,9 +31,12 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY:deploy-$IMAGE_TAG .
+          docker push $ECR_REGISTRY:deploy-$IMAGE_TAG
 
       - name: Deploy to staging
         run: |
           echo "Deploying to staging environment"
+
+# yesterday, I addressed comments on my dashboard PR and had a PR for CD workflow which automatically builds and pushes the image to ECR when a PR is merged into main.
+# Today, I will address comments on my 2 PRs if any.
