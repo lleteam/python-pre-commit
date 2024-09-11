@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - staging
 
 jobs:
   build-and-push:
@@ -30,7 +31,7 @@ jobs:
         env:
           ECR_REGISTRY: 213610948257.dkr.ecr.ap-southeast-1.amazonaws.com
           ECR_REPOSITORY: test
-          IMAGE_TAG: ${{ github.sha }}
+          IMAGE_TAG: ${{ github.ref_name }}-${{ github.sha }}-${{ steps.timestamp.outputs.timestamp }}
         run: |
           echo "ECR_REGISTRY: $ECR_REGISTRY"
           echo "ECR_REPOSITORY: $ECR_REPOSITORY"
