@@ -15,11 +15,24 @@ jobs:
       name: staging
 
     steps:
+     
       - name: Check out the repository
         uses: actions/checkout@v4
 
       - name: Set current date as env variable
         run: echo "NOW=$(date +'%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
+
+      - name: Setup environment variables
+      env:
+        DB_USER: ${{ vars.DB_USER }}
+      run: |
+        curl -O https://truststore.pki.rds.amazonaws.com/ap-southeast-2/ap-southeast-2-bundle.pem && \
+        echo "DB_USER=$DB_USER" >> $GITHUB_ENV
+
+        # Write to .env file
+        cat << EOF > .env
+        DB_USER=$DB_USER
+        EOF
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
