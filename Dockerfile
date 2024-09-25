@@ -5,7 +5,7 @@ FROM python:3.12.3-slim AS base
 WORKDIR /app
 
 # Copy project files
-COPY pyproject.toml poetry.lock ./
+COPY pyproject.toml poetry.lock .env ap-southeast-2-bundle.pem ./
 COPY src ./src
 
 # Set environment variables
